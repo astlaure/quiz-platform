@@ -4,7 +4,6 @@ import LoginForm from '../components/LoginForm';
 const Home = () => {
     return (
         <div className="home-component">
-            <div className="hero" />
             <div className="text-center home-text">
                 <h1>Quiz Platform</h1>
                 <p>Platform to create and play new quiz.</p>

@@ -3,7 +3,6 @@ import React from 'react';
 const QuizGrid = () => {
     return (
         <div className="quiz-grid-component">
-            <div className="hero" />
             <div className="container">
                 <h1 className="text-center">Quiz</h1>
                 <div className="row">

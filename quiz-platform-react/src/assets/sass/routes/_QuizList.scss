@@ -1,15 +1,6 @@
 @import "../variables";
 
 .quiz-list-component {
-  .hero {
-    background-image: url("../images/hero2.jpg");
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-    z-index: -1;
-    top: 0;
-  }
-
   h1 {
     font-size: 5rem;
     padding-top: 4rem;
