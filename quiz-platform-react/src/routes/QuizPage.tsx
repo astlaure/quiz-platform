@@ -1,7 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import useHttpClient from '../hooks/useHttpClient';
 
 const QuizPage = () => {
+    const params = useParams<{ id: string }>();
+    const httpClient = useHttpClient();
     const [state, setState] = useState('');
+
+    useEffect(() => {
+        httpClient.get(`/api/quiz/${params.id}`)
+            .then((response) => setState(response))
+            .catch(() => {});
+    }, [])
+
     return (
         <div className="quiz-page-component">
             <div className="container mb-5">
@@ -10,6 +21,9 @@ const QuizPage = () => {
                     <div className="col-md-8">
                         <div className="card">
                             <div className="card-body">
+                                <form action="#">
+
+                                </form>
                                 <h3 className="text-white mb-3">Couleur du cheval blanc de Napoleon?</h3>
                                 <form action="#">
                                     <div className="custom-control custom-radio mb-2" onClick={event => setState('1')}>

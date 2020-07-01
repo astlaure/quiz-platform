@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
+import { Choice } from '../models/app.models';
 
-const ChoiceForm = () => {
+interface ChoiceFormProps {
+    choice: Choice;
+}
+
+const ChoiceForm: React.FC<ChoiceFormProps> = (props) => {
     const [state, setState] = useState({
         name: '',
         type: 'SINGLE'
@@ -11,25 +16,25 @@ const ChoiceForm = () => {
     }
 
     return (
-        <div className="choice-form">
-            <form action="#" onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label htmlFor="username">Username</label>
-                    <input
-                        id="username"
-                        className="form-control"
-                        type="text"
-                    />
+        <div className="choice-form col-md-3">
+            <div className="card">
+                <div className="card-body">
+                    {/*<form action="#">*/}
+                        <div className="form-group">
+                            <label htmlFor="name">Name</label>
+                            <input className="form-control" type="text"/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="name">Name</label>
+                            <input className="form-control" type="text"/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="name">Name</label>
+                            <input className="form-control" type="text"/>
+                        </div>
+                    {/*</form>*/}
                 </div>
-                <div className="form-group">
-                    <label htmlFor="password">Password</label>
-                    <input
-                        id="password"
-                        className="form-control"
-                        type="password"
-                    />
-                </div>
-            </form>
+            </div>
         </div>
     )
 }

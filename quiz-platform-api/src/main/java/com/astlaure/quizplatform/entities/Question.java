@@ -18,6 +18,7 @@ public class Question {
 
     private String value;
 
+    @Enumerated(EnumType.STRING)
     private QuestionType type;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "question")

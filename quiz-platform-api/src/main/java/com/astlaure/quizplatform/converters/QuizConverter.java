@@ -1,8 +1,11 @@
 package com.astlaure.quizplatform.converters;
 
+import com.astlaure.quizplatform.entities.Choice;
+import com.astlaure.quizplatform.entities.Question;
 import com.astlaure.quizplatform.entities.Quiz;
 import com.astlaure.quizplatform.models.ChoiceResponse;
 import com.astlaure.quizplatform.models.QuestionResponse;
+import com.astlaure.quizplatform.models.QuizRequest;
 import com.astlaure.quizplatform.models.QuizResponse;
 import org.springframework.stereotype.Component;
 
@@ -33,5 +36,29 @@ public class QuizConverter {
         );
 
         return quizResponse;
+    }
+
+    public Quiz convert(QuizRequest request) {
+        Quiz quiz = new Quiz();
+        quiz.setName(request.getName());
+        quiz.setQuestions(request.getQuestions().stream()
+                .map(questionRequest -> {
+                    Question question = new Question();
+                    question.setValue(questionRequest.getValue());
+                    question.setType(questionRequest.getType());
+                    question.setChoices(questionRequest.getChoices().stream()
+                            .map(choiceRequest -> {
+                                Choice choice = new Choice();
+                                choice.setValue(choiceRequest.getValue());
+                                choice.setPoints(choiceRequest.getPoints());
+                                choice.setAnswer(choiceRequest.isAnswer());
+                                return choice;
+                            }).collect(Collectors.toList())
+                    );
+                    return question;
+                }).collect(Collectors.toList())
+        );
+
+        return quiz;
     }
 }
