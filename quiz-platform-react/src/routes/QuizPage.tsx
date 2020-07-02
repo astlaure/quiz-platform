@@ -1,15 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import useHttpClient from '../hooks/useHttpClient';
+import { Quiz } from '../models/app.models';
 
 const QuizPage = () => {
     const params = useParams<{ id: string }>();
     const httpClient = useHttpClient();
-    const [state, setState] = useState('');
+    const [state, setState] = useState({
+        quiz: '',
+        answers: [
+            { questionId: 1, choiceId: 1 }
+        ]
+    });
 
     useEffect(() => {
         httpClient.get(`/api/quiz/${params.id}`)
-            .then((response) => setState(response))
+            .then((response: Quiz) => {
+                // response.
+            })
             .catch(() => {});
     }, [])
 
@@ -26,33 +34,33 @@ const QuizPage = () => {
                                 </form>
                                 <h3 className="text-white mb-3">Couleur du cheval blanc de Napoleon?</h3>
                                 <form action="#">
-                                    <div className="custom-control custom-radio mb-2" onClick={event => setState('1')}>
+                                    <div className="custom-control custom-radio mb-2" /*onClick={event => setState('1')}*/>
                                         <input
                                             className="custom-control-input"
                                             type="radio"
                                             name="hello"
                                             value="1"
-                                            checked={state === "1"}
+                                            // checked={state === "1"}
                                         />
                                         <label htmlFor="name" className="custom-control-label">Name</label>
                                     </div>
-                                    <div className="custom-control custom-radio mb-2" onClick={event => setState('2')}>
+                                    <div className="custom-control custom-radio mb-2" /*onClick={event => setState('2')}*/>
                                         <input
                                             className="custom-control-input"
                                             type="radio"
                                             name="hello"
                                             value="2"
-                                            checked={state === "2"}
+                                            // checked={state === "2"}
                                         />
                                         <label htmlFor="name" className="custom-control-label">Name</label>
                                     </div>
-                                    <div className="custom-control custom-radio mb-2" onClick={event => setState('3')}>
+                                    <div className="custom-control custom-radio mb-2" /*onClick={event => setState('3')}*/>
                                         <input
                                             className="custom-control-input"
                                             type="radio"
                                             name="hello"
                                             value="3"
-                                            checked={state === "3"}
+                                            // checked={state === "3"}
                                         />
                                         <label htmlFor="name" className="custom-control-label">Name</label>
                                     </div>

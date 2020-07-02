@@ -4,6 +4,7 @@ export interface User {
 }
 
 export interface Choice {
+    id: number;
     value: string;
     points: number;
     answer: boolean;
