@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Redirect, Link } from 'react-router-dom';
+import QuizContext from '../core/QuizContext';
 
 const Result = () => {
+    const quizContext = useContext(QuizContext);
+
+    if (quizContext.result === -1) {
+        return <Redirect to="/" />;
+    }
+
     return (
         <div className="result-component">
             <div className="container">
@@ -9,8 +17,8 @@ const Result = () => {
                     <div className="col-md-8 mb-5">
                         <div className="card">
                             <div className="card-body">
-                                <p className="score-text">Your score is: 69%</p>
-                                <a href="#" className="btn btn-primary btn-lg w-50 mt-4">Play again</a>
+                                <p className="score-text">Your score is: {quizContext.result} %</p>
+                                <Link to="/" className="btn btn-primary btn-lg w-50 mt-4" onClick={() => quizContext.setResult(-1)}>Play again</Link>
                             </div>
                         </div>
                     </div>

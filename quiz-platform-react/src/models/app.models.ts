@@ -12,6 +12,7 @@ export interface Choice {
 }
 
 export interface Question {
+    id: number;
     value: string;
     type: 'SINGLE' | 'MULTI' | 'LONG';
     choices: Choice[];
@@ -21,4 +22,10 @@ export interface Quiz {
     name: string;
     date: Date;
     questions: Question[];
+}
+
+export const initialQuiz: Quiz = {
+    name: '',
+    date: new Date(),
+    questions: []
 }

@@ -23,6 +23,7 @@ public class QuizConverter {
                     QuestionResponse questionResponse = new QuestionResponse();
                     questionResponse.setId(question.getId());
                     questionResponse.setValue(question.getValue());
+                    questionResponse.setType(question.getType());
                     questionResponse.setChoices(question.getChoices().stream()
                             .map(choice -> {
                                 ChoiceResponse choiceResponse = new ChoiceResponse();

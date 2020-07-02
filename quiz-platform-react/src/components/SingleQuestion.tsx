@@ -11,7 +11,7 @@ const SingleQuestion: React.FC<SingleQuestionProps> = (props) => {
     const { question, answer, changeEvent } = props;
 
     return (
-        <div className="single-question">
+        <div className="single-question mb-4">
             <h3 className="text-white mb-3">{question.value}</h3>
             {
                 question.choices.map((choice, index) => {
